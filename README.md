@@ -12,6 +12,18 @@ $ yarn start
 $ yarn server
 ```
 
+## How to run application
+
+```
+yarn install
+
+// for client-side
+yarn start
+
+// for server-side
+yarn server
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
