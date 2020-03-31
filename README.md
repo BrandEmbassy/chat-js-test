@@ -1,5 +1,17 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## How to run application
+
+```
+yarn install
+
+// for client-side
+yarn start
+
+// for server-side
+yarn server
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -11,6 +23,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
+
+### `yarn server`
+
+Runs the Socket.IO server on PORT 4444
+See [Socket.IO Docs](https://socket.io/docs/) for more details
 
 ### `yarn test`
 
