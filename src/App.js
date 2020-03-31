@@ -24,7 +24,7 @@ function App() {
   const [message, setMessage] = React.useState('')
   const [userName, setUserName] = React.useState('')
   const [messageList, setMessageList] = React.useState([])
-
+  
   useEffect(() => {
     client.on('chat', (id, userName, message) => {
       setMessageList((messageList) => [...messageList, {id, userName, message}])
@@ -47,17 +47,26 @@ function App() {
 
   return (
     <div className="App">
-      <TextField fullWidth label="Enter your username" onChange={handleUsernameChange}/>
-      <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
-        <TextField fullWidth value={message} label="Enter your message and press [ENTER]" onChange={handleMessageChange}/>
-      </form>
-        <dl>
+    	<div id="controlBox">    	      
+    	  	<TextField fullWidth placeholder="Enter your username" onChange={handleUsernameChange}/>
+	      <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
+	        <TextField id="writeMessage" value={message} placeholder="Enter your message and press [ENTER]"  onChange={handleMessageChange}/>
+	      </form>
+	      <div id="toolBox">
+	      	<div className="rooms button"></div>
+	      	<div className="status button"></div>
+	      	<div className="settings button"></div>
+	      </div>
+    	</div>
+        <div id="messages">
           {messageList.map(({id, userName, message}) => 
-            <div key={id}>
-              <dt>{userName}:</dt> <dd>{message}</dd>
+            <div key={id} className="messageBlock">
+              <div className="userName">{userName}</div>
+              <div className="message">{message}</div>
+              <img className="avatar" alt="" src="/img/avatars/5.png" />
             </div>
           )}
-        </dl>
+        </div>
     </div>
   );
 }
