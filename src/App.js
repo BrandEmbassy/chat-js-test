@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
+
 const client = socketClient('localhost:4444')
 
 function App() {
@@ -24,10 +25,10 @@ function App() {
   const [message, setMessage] = React.useState('')
   const [userName, setUserName] = React.useState('')
   const [messageList, setMessageList] = React.useState([])
-  
+
   useEffect(() => {
-    client.on('chat', (id, userName, message) => {
-      setMessageList((messageList) => [...messageList, {id, userName, message}])
+    client.on('chat', (id, userName, message, avatarId) => {
+      setMessageList((messageList) => [...messageList, {id, userName, message, avatarId}])
     })
   }, [])
 
@@ -47,7 +48,7 @@ function App() {
 
   return (
     <div className="App">
-    	<div id="controlBox">    	      
+    	<div id="controlBox">
     	  	<TextField fullWidth placeholder="Enter your username" onChange={handleUsernameChange}/>
 	      <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
 	        <TextField id="writeMessage" value={message} placeholder="Enter your message and press [ENTER]"  onChange={handleMessageChange}/>
@@ -59,11 +60,11 @@ function App() {
 	      </div>
     	</div>
         <div id="messages">
-          {messageList.map(({id, userName, message}) => 
+          {messageList.map(({id, userName, message, avatarId}) => 
             <div key={id} className="messageBlock">
               <div className="userName">{userName}</div>
               <div className="message">{message}</div>
-              <img className="avatar" alt="" src="/img/avatars/5.png" />
+              <img className="avatar" alt="" src={`/img/avatars/${avatarId}.png`} />
             </div>
           )}
         </div>
