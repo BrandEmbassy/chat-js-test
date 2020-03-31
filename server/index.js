@@ -12,8 +12,12 @@ server.listen('4444', () => {
 });
 
 function addUser(username) {
-	global.users[username] = {}
-	global.users[username].avatarId =  Math.floor(Math.random() * Math.floor(49)) + 1;	
+	
+	global.users[username] = {
+		'avatarId': Math.floor(Math.random() * Math.floor(49)) + 1,
+		'userId': Object.keys(global.users).length + 1
+	};
+
 }
 
 io.on('connection', (socket) => {
@@ -21,10 +25,11 @@ io.on('connection', (socket) => {
 	  
 	if (!global.users[username]) addUser(username);	
 	avatarId = global.users[username].avatarId;
+	userId = global.users[username].userId;
 	
     console.log('message ' + id + ' received, sent by: ' + username + ', content: ' + message);
     
-    io.emit('chat', id, username, message, avatarId);
+    io.emit('chat', id, username, message, avatarId, userId);
     
   });
 });

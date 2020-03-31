@@ -27,6 +27,16 @@
     <title>React App</title>
     
     <style>
+
+		html{
+		    min-height:100%;
+		    position:relative;
+		}
+		
+		body{
+		    height:100%;
+		}
+	    
 	    body {
 		    background-image: url("/img/bg.jpg");
 		    background-position: center center;
@@ -34,9 +44,25 @@
 		    background-attachment: fixed;
 		    background-size: cover;
 		    background-color: #0E1D62;
-		    padding: 30px;
 		    }
 		    
+		#messagesWrap {
+			display: flex;
+			flex-direction: column-reverse;	
+		    position:absolute;
+		    top:30px;
+		    bottom:150px;
+		    left:30px;
+		    right:30px;					
+			overflow-y: scroll;	
+
+		}
+		
+		#messages {
+			display: table;
+			min-height: 100%;
+		}
+		
 		.messageBlock {
 			display: table;
 			position: relative;
@@ -51,8 +77,22 @@
 		}
 				
 		.messageBlock .userName {
-			color: #80AA63; /* #F0716E */
+			color: #80AA63;
 		}
+
+		.messageBlock[data-color="2"] .userName {
+			color: #F0716E; 
+		}
+
+		.messageBlock[data-color="3"] .userName {
+			color: #62C1CC; 
+		}
+
+		.messageBlock[data-color="4"] .userName {
+			color: #E9B46F; 
+		}
+		
+		
 		
 		.messageBlock .avatar {
 			position: absolute;

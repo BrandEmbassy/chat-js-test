@@ -3,10 +3,6 @@ import TextField from '@material-ui/core/TextField'
 import socketClient from 'socket.io-client';
 import * as uuid from 'uuid';
 
-
-
-
-
 const client = socketClient('localhost:4444')
 
 function App() {
@@ -15,8 +11,8 @@ function App() {
   const [messageList, setMessageList] = React.useState([])
 
   useEffect(() => {
-    client.on('chat', (id, userName, message, avatarId) => {
-      setMessageList((messageList) => [...messageList, {id, userName, message, avatarId}])
+    client.on('chat', (id, userName, message, avatarId, userId) => {
+      setMessageList((messageList) => [...messageList, {id, userName, message, avatarId, userId}])
     })
   }, [])
 
@@ -47,14 +43,16 @@ function App() {
 	      	<div className="settings button inactive"></div>
 	      </div>
     	</div>
-        <div id="messages">
-          {messageList.map(({id, userName, message, avatarId}) => 
-            <div key={id} className="messageBlock">
-              <div className="userName">{userName}</div>
-              <div className="message">{message}</div>
-              <img className="avatar" alt="" src={`/img/avatars/${avatarId}.png`} />
-            </div>
-          )}
+    	<div id="messagesWrap">
+	        <div id="messages">
+	          {messageList.map(({id, userName, message, avatarId, userId}) => 
+	            <div key={id} className="messageBlock" data-color={userId}>
+	              <div className="userName">{userName}</div>
+	              <div className="message">{message}</div>
+	              <img className="avatar" alt="" src={`/img/avatars/${avatarId}.png`} />
+	            </div>
+	          )}
+	           </div>
         </div>
     </div>
   );
