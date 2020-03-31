@@ -53,9 +53,9 @@ function App() {
 	        <TextField id="writeMessage" value={message} placeholder="Enter your message and press [ENTER]"  onChange={handleMessageChange}/>
 	      </form>
 	      <div id="toolBox">
-	      	<div className="rooms button"></div>
-	      	<div className="status button"></div>
-	      	<div className="settings button"></div>
+	      	<div className="rooms button inactive"></div>
+	      	<div className="status button inactive"></div>
+	      	<div className="settings button inactive"></div>
 	      </div>
     	</div>
         <div id="messages">
