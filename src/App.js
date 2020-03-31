@@ -1,27 +1,15 @@
 import React, { useEffect } from 'react';
 import TextField from '@material-ui/core/TextField'
-import { makeStyles } from '@material-ui/core/styles';
 import socketClient from 'socket.io-client';
 import * as uuid from 'uuid';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: '25ch',
-  },
-}));
+
 
 
 
 const client = socketClient('localhost:4444')
 
 function App() {
-  const classes = useStyles();
   const [message, setMessage] = React.useState('')
   const [userName, setUserName] = React.useState('')
   const [messageList, setMessageList] = React.useState([])
@@ -50,7 +38,7 @@ function App() {
     <div className="App">
     	<div id="controlBox">
     	  	<TextField fullWidth placeholder="Enter your username" onChange={handleUsernameChange}/>
-	      <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
+	      <form noValidate autoComplete="off" onSubmit={handleSubmit}>
 	        <TextField id="writeMessage" value={message} placeholder="Enter your message and press [ENTER]"  onChange={handleMessageChange}/>
 	      </form>
 	      <div id="toolBox">
