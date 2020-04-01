@@ -12,8 +12,8 @@ function App() {
   const [messageList, setMessageList] = React.useState([])
 
   useEffect(() => {
-    client.on('chat', (id, userName, message, avatarId, userId) => {
-      setMessageList((messageList) => [...messageList, {id, userName, message, avatarId, userId}])
+    client.on('chat', (id, userName, message, userId) => {
+      setMessageList((messageList) => [...messageList, {id, userName, message, userId}])
     })
   }, [])
 
@@ -46,11 +46,11 @@ function App() {
     	</div>
     	<div id="messagesWrap">
 	        <div id="messages">
-	          {messageList.map(({id, userName, message, avatarId, userId}) => 
-	            <div key={id} className="messageBlock" data-color={userId%4}>
+	          {messageList.map(({id, userName, message, userId}) => 
+	            <div key={id} className="messageBlock" data-color={userId%4} data-userid={userId}>
 	              <div className="userName">{userName}</div>
 	              <div className="message">{message}</div>
-	              <img className="avatar" alt="" src={`/img/avatars/${avatarId}.png`} />
+	              <img className="avatar" alt="" src={"/img/avatars/" + (userId % 49) + ".png"} />
 	            </div>
 	          )}
 	           </div>

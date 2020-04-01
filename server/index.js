@@ -12,7 +12,6 @@ server.listen('4444', () => {
 
 function addUser(username) {
 	users[username] = {
-		avatarId: Math.floor(Math.random() * Math.floor(49)) + 1,
 		userId: Object.keys(users).length + 1
 	};
 
@@ -24,10 +23,10 @@ io.on('connection', (socket) => {
 		if (users[username] === undefined) {
 			addUser(username);
 		}
-		const { avatarId, userId } = users[username];
+		const { userId } = users[username];
 
     console.log('message ' + id + ' received, sent by: ' + username + ', content: ' + message);
 
-    io.emit('chat', id, username, message, avatarId, userId);
+    io.emit('chat', id, username, message, userId);
   });
 });
