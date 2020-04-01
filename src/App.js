@@ -33,6 +33,16 @@ function App() {
 
   return (
     <div className="App">
+    	
+    	<div className="infoBox">
+			<strong className="higlight">Welcome to NICE InContact JavaScript test.</strong><br /><br />
+			Do not forget to check out hiring microsite <a href="http://niceprague.team" target="_blank">niceprague.team</a><br /><br />
+			<span className="higlight">Enjoy your coding!</span><br />
+			<i className="red">♥</i>
+			<i className="green">♥</i>			
+			<i className="blue">♥</i>
+			<i className="yellow">♥</i>
+    	</div>
     
     	<div id="controlBox">
     	  <TextField fullWidth placeholder="Enter your username" onChange={handleUsernameChange}/>
