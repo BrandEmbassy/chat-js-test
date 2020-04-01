@@ -13,8 +13,9 @@ server.listen('4444', () => {
 function addUser(username) {
 	users[username] = {
 		avatarId: Math.floor(Math.random() * Math.floor(49)) + 1,
-		userId: users.length + 1
+		userId: Object.keys(users).length + 1
 	};
+
 }
 
 io.on('connection', (socket) => {

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import TextField from '@material-ui/core/TextField'
 import socketClient from 'socket.io-client';
 import * as uuid from 'uuid';
+import './index.css'
 
 const client = socketClient('localhost:4444')
 
@@ -46,7 +47,7 @@ function App() {
     	<div id="messagesWrap">
 	        <div id="messages">
 	          {messageList.map(({id, userName, message, avatarId, userId}) => 
-	            <div key={id} className="messageBlock" data-color={userId}>
+	            <div key={id} className="messageBlock" data-color={userId%4}>
 	              <div className="userName">{userName}</div>
 	              <div className="message">{message}</div>
 	              <img className="avatar" alt="" src={`/img/avatars/${avatarId}.png`} />
