@@ -33,17 +33,14 @@ function App() {
 
   return (
     <div className="App">
+    
     	<div id="controlBox">
-    	  	<TextField fullWidth placeholder="Enter your username" onChange={handleUsernameChange}/>
+    	  <TextField fullWidth placeholder="Enter your username" onChange={handleUsernameChange}/>
 	      <form noValidate autoComplete="off" onSubmit={handleSubmit}>
 	        <TextField id="writeMessage" value={message} placeholder="Enter your message and press [ENTER]"  onChange={handleMessageChange}/>
 	      </form>
-	      <div id="toolBox">
-	      	<div className="rooms button inactive"></div>
-	      	<div className="status button inactive"></div>
-	      	<div className="settings button inactive"></div>
-	      </div>
     	</div>
+    	
     	<div id="messagesWrap">
 	        <div id="messages">
 	          {messageList.map(({id, userName, message, userId}) => 
@@ -53,8 +50,9 @@ function App() {
 	              <img className="avatar" alt="" src={"/img/avatars/" + (userId % 49) + ".png"} />
 	            </div>
 	          )}
-	           </div>
+	         </div>
         </div>
+        
     </div>
   );
 }
