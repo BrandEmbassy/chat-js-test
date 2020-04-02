@@ -119,7 +119,7 @@ body {
 
 .infoBox {
 	position: absolute;
-	right: 30px;
+	right: 60px;
 	top:30px;
 	width: 150px;
 	padding: 10px;
@@ -147,4 +147,46 @@ body {
 
 .yellow {
 	color: #E9B46F;
+}
+
+::-webkit-scrollbar {
+	width: 2px;
+	height: 2px;
+}
+
+::-webkit-scrollbar-button {
+	width: 0px;
+	height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, 0.6);
+	border: 0px none #ffffff;
+	border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb:active {
+	background: #ffffff;
+}
+
+::-webkit-scrollbar-track {
+	background: rgba(0, 0, 0, 0.2);
+	border: 0px none #ffffff;
+	border-radius: 50px;
+}
+
+::-webkit-scrollbar-track:hover {
+	background: rgba(0, 0, 0, 0.4);
+}
+
+::-webkit-scrollbar-track:active {
+	background: #333333;
+}
+
+::-webkit-scrollbar-corner {
+	background: transparent;
 }
